@@ -1,0 +1,49 @@
+﻿
+h3 {
+    color: lightsteelblue;
+}
+
+font-face {
+    font-style: italic;
+    font-size: 1rem;
+}
+
+table {
+    caption-side: bottom;
+    border-collapse: collapse;
+}
+
+caption {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    color: var(--bs-secondary-color);
+    text-align: left;
+}
+
+th {
+    text-align: inherit;   
+}
+
+thead,
+tbody,
+tfoot,
+tr,
+td,
+th {
+    border-color: lightsteelblue;
+    border-style: ridge;
+    border-width: 0.25rem;
+    padding-top: 0.15rem;
+    padding-bottom: 0.15rem;
+}
+
+label {
+    display: inline-block;
+}
+
+button {
+    border-radius: 0;
+}
+
+
+

@@ -1,0 +1,51 @@
+﻿@page "/restdetail"
+@page "/restdetail/{id:int}/{city}"
+
+<div class="w3-container w3-light-grey">
+    <h3 class="page-title">Detail and Reviews</h3>
+
+    @if (SelectedRestaurant == null)
+    {
+        <p><em>Selected Restaurant Details Not Found...</em></p>
+    }
+    else
+    {
+        <div class="w3-card w3-blue-grey style=width:50%">
+            <div style="width:50%">
+                <label for="name">Name: @SelectedRestaurant.Name</label>
+            </div>
+
+            <div style="width:50%">
+                <label for="city">City: @SelectedRestaurant.City</label>
+            </div>
+
+            <div style="width:50%">
+                <label for="state">State: @SelectedRestaurant.State</label>
+            </div>
+
+            <div style="width:50%">
+                <a href="@($"addreview/{@SelectedRestaurant.Id}")">Add a review</a>
+            </div>
+        </div>
+
+
+        @if (HasUserReviews)
+        {
+            @foreach (var item in SelectedRestaurant.UserReviews)
+            {
+                <div style="width:50%">
+                    <p class="w3-card w3-khaki">
+                        @item.Title - @item.Comments
+                    </p>
+                </div>
+            }
+        }
+    }
+    <div class="w3-bottom">
+        <div class="w3-bar w3-light-grey w3-border">
+            <p class="btn-link"><img src="img/back-arrow.svg"/><a class="w3-bar-item w3-button" @onclick="@NavigateToRestaurantList"><i>Back to Restaurant List</i></a></p>
+        </div>
+    </div>
+</div>
+
+
