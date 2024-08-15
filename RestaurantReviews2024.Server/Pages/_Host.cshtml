@@ -1,0 +1,60 @@
+﻿@page "/"
+@using RestaurantReviewsUI
+@using RestaurantReviewsUI.Components
+@namespace RestaurantReviews.Server.Pages
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = null;
+}
+@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery Xsrf
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Restaurant Reviews 2024 - Server</title>
+    <base href="~/" />
+    
+    <link href="_content/RestaurantReviewsUI/css/app.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href="_content/RestaurantReviewsUI/css/bootstrap.css" rel="stylesheet" />
+    
+
+    <script src="https://kit.fontawesome.com/273d0585ea.js" crossorigin="anonymous"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
+    
+</head>
+<body>
+    @{
+        var initialTokenState = new RestaurantReviewsUI.Services.InitialApplicationState
+            {
+                XsrfToken = Xsrf.GetAndStoreTokens(HttpContext).RequestToken!
+                // Cookie = HttpContext.Request.Cookies[".AspNetCore.Cookies"]
+            };
+    }
+
+    <app>
+        <component type="typeof(App)" render-mode="ServerPrerendered" param-InitialState="initialTokenState" />
+    </app>
+
+
+
+    <div id="blazor-error-ui">
+        <environment include="Staging,Production">
+            An error has occurred. This application may no longer respond until reloaded.
+        </environment>
+        <environment include="Development">
+            An unhandled exception has occurred. See browser dev tools for details.
+        </environment>
+        <a href="" class="reload">Reload</a>
+        <a class="dismiss">🗙</a>
+    </div>
+
+    <script src="_framework/blazor.server.js"></script>
+
+    
+</body>
+</html>

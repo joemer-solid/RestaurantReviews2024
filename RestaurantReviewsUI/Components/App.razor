@@ -1,4 +1,18 @@
-﻿<!DOCTYPE html>
+﻿@inject RestaurantReviewsUI.Services.TokenProvider TokenProvider
+@code {
+    [Parameter]
+    public RestaurantReviewsUI.Services.InitialApplicationState? InitialState { get; set; }
+
+    protected override Task OnInitializedAsync()
+    {
+        TokenProvider.XsrfToken = InitialState!.XsrfToken!;
+        // TokenProvider.Cookie = InitialState.Cookie;
+
+        return base.OnInitializedAsync();
+    }
+}
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -13,7 +27,9 @@
 </head>
 
 <body>    
-    <Routes @rendermode="InteractiveServer" />
+    <CascadingAuthenticationState>
+        <Routes @rendermode="InteractiveServer" />
+    </CascadingAuthenticationState>    
     <script src="_framework/blazor.web.js"></script>
 </body>
 

@@ -35,11 +35,11 @@ namespace RestaurantReviews2024
 				{
 					var services = scope.ServiceProvider;
 					var loggerFactory = services.GetRequiredService<ILoggerFactory>();
-					Log.Information("Application Starting");
+					Log.Information("RestaurantReviews WEB API - Application Starting");
 				}
 				catch (Exception ex)
 				{
-					Log.Warning(ex, "An error occured while starting the application");
+					Log.Warning(ex, "RestaurantReviews WEB API - An error occured while starting the application");
 				}
 			}
 
