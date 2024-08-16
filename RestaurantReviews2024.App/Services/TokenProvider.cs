@@ -3,6 +3,8 @@
     public abstract class CrossSiteRequestForgeryTokenBase
     {
         public string XsrfToken { get; set; } = string.Empty;
+
+        public string Cookie { get; set; } = string.Empty;
     }
 
     public sealed class TokenProvider : CrossSiteRequestForgeryTokenBase

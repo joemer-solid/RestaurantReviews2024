@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Authorization;
 using RestaurantReviews2024.App.Services;
 using RestaurantReviewsShared.Entities;
 
@@ -7,7 +8,8 @@ namespace RestaurantReviews2024.App.Pages
     public partial class RestaurantListView
     {
         [Inject]
-        public IRestaurantsListService? RestaurantListService { get; set; }
+        public IRestaurantsListService? RestaurantListService { get; set; }      
+
 
         protected IEnumerable<RestaurantVM> RestaurantListViewItems { get; private set; } = [];
 

@@ -35,6 +35,11 @@ namespace RestaurantReviews2024.Server
                 client.BaseAddress = new Uri("https://localhost:7131/");
             });
 
+            services.AddHttpClient<IRegisteredUsersAdminService, RegisteredUsersAdminService>(client =>
+            {
+                client.BaseAddress = new Uri("https://localhost:44345/");
+            });
+
             // TokenProvider is a service defined in the App (RestaurantReviewsUI)
             services.AddScoped<TokenProvider>();
 

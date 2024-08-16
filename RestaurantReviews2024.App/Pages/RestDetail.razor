@@ -25,7 +25,14 @@
             </div>
 
             <div style="width:50%">
-                <a href="@($"addreview/{@SelectedRestaurant.Id}")">Add a review</a>
+                @if (IsAuthorizedToAddReview)
+                {
+                    <a href="@($"addreview/{@SelectedRestaurant.Id}")">Add a review</a>
+                }
+                else
+                {
+                    <div>The current user is not authorized to add reviews</div>
+                }                
             </div>
         </div>
 
