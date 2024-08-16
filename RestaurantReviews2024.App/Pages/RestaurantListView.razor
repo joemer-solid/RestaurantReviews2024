@@ -1,0 +1,42 @@
+﻿@page "/RestaurantList"
+@attribute [Authorize]
+
+@inject Microsoft.AspNetCore.Components.NavigationManager navMgr;
+
+<div class="w3-container w3-light-grey">
+    <h3 class="page-title">RestaurantListView</h3>
+
+    @if (RestaurantListViewItems == null)
+    {
+        <p><em>No data</em></p>
+    }
+    else
+    {
+        <div class="container">
+            <table class="table">
+                <thead>
+                    <tr class="tr">
+                        <th>Name</th>
+                        <th>City</th>
+                        <th>State</th>
+                        <th>Overview</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in RestaurantListViewItems)
+                    {
+                        <tr class="tr">
+                            <td class="td">
+                                <a href="@($"restdetail/{@item.Id}/{item.City}")">@item.Name</a>
+                            </td>
+                            <td class="td">@item.City</td>
+                            <td class="td">@item.State</td>
+                            <td class="td">@item.Overview</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+</div>
+

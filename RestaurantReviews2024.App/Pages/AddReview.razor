@@ -1,0 +1,59 @@
+﻿@page "/addreview/{id:int}"
+
+
+<h3 class="mb-5">Add Restaurant Review for @RestaurantName</h3>
+
+
+<EditForm FormName="AddReviewForm" Model="UserReviewViewModel" OnValidSubmit="@HandleValidSubmit" class="w3-container">
+
+    <DataAnnotationsValidator />
+    <ValidationSummary></ValidationSummary>
+
+    <div class="w3-container">
+        <label for="Title" class="w3-text-blue">Title</label>
+        <InputText id="Title" class="w3-input w3-border w3-round" @bind-Value="UserReviewViewModel.Title" placeholder="Enter Title for the review"></InputText>
+        <ValidationMessage class="offset-sm-3 col-sm-5" For="@(() => UserReviewViewModel.Title)" />
+    </div>
+    <div class="w3-container">
+        <label for="Comments" class="w3-text-blue">Title</label>
+        <InputTextArea id="Comments" class="w3-input w3-border w3-round" @bind-Value="UserReviewViewModel.Comments" placeholder="Enter review comments"></InputTextArea>
+        <ValidationMessage class="offset-sm-3 col-sm-5" For="@(() => UserReviewViewModel.Comments)" />
+    </div>
+
+
+    <div class="w3-container w3-input w3-border w3-round" style="width:25%">
+        <label for="ReviewRatingLevel" class="w3-text-blue">Overall Rating</label>
+        <InputSelect @bind-Value="UserReviewViewModel.RatingsLevel">
+            <option checked="@(UserReviewViewModel!.RatingsLevel == (int)@UserReviewRatingLevel.Poor)"
+                    value='@((int)UserReviewRatingLevel.Poor)'>
+                @UserReviewRatingLevel.Poor.ToString()
+            </option>
+            <option checked="@(UserReviewViewModel!.RatingsLevel == (int)@UserReviewRatingLevel.BelowAverage)"
+                    value='@((int)UserReviewRatingLevel.BelowAverage)'>
+                @UserReviewRatingLevel.BelowAverage.ToString()
+            </option>
+            <option checked="@(UserReviewViewModel!.RatingsLevel == (int)@UserReviewRatingLevel.Average)"
+                    value='@((int)UserReviewRatingLevel.Average)'>
+                @UserReviewRatingLevel.Average.ToString()
+            </option>
+            <option checked="@(UserReviewViewModel!.RatingsLevel == (int)@UserReviewRatingLevel.VeryGood)"
+                    value='@((int)UserReviewRatingLevel.VeryGood)'>
+                @UserReviewRatingLevel.VeryGood.ToString()
+            </option>
+            <option checked="@(UserReviewViewModel!.RatingsLevel == (int)@UserReviewRatingLevel.Excellent)"
+                    value='@((int)UserReviewRatingLevel.Excellent)'>
+                @UserReviewRatingLevel.Excellent.ToString()
+            </option>
+        </InputSelect>
+    </div>
+
+    <div class="w3-container  w3-border-top w3-border-bottom w3-round" style="width:25%">
+        <button type="submit" class="submit-button mt-3">Add Review</button>
+    </div>
+
+    <div class="w3-bottom">
+        <div class="w3-bar w3-light-grey w3-border">
+            <p class="btn-link"><img src="img/back-arrow.svg" /><a class="w3-bar-item w3-button" @onclick="@NavigateToRestaurantDetail"><i>Back to Restaurant Detail</i></a></p>
+        </div>
+    </div>
+</EditForm>

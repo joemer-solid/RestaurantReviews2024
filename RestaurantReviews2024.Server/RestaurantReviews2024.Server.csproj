@@ -66,8 +66,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\RestaurantReviews2024.App\RestaurantReviews2024.App.csproj" />
     <ProjectReference Include="..\RestaurantReviewsShared\RestaurantReviewsShared.csproj" />
-    <ProjectReference Include="..\RestaurantReviewsUI\RestaurantReviewsUI.csproj" />
   </ItemGroup>
 
 </Project>

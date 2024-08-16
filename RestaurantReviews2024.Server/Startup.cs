@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authentication.Cookies;
-using RestaurantReviewsUI.Components;
-using RestaurantReviewsUI.Services;
+using RestaurantReviews2024.App.Services;
 
 namespace RestaurantReviews2024.Server
 {
@@ -23,7 +22,8 @@ namespace RestaurantReviews2024.Server
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
-            services.AddServerSideBlazor();
+            services.AddServerSideBlazor()
+                .AddInteractiveServerComponents();
 
             services.AddHttpClient<IRestaurantsListService, RestaurantListService>(client =>
             {
@@ -57,13 +57,13 @@ namespace RestaurantReviews2024.Server
             }
 
             app.UseHttpsRedirection();
-            app.UseStaticFiles();
-            app.UseAntiforgery();
-
+            app.UseStaticFiles();  
+            
             app.UseRouting();
 
             app.UseAuthentication();
-            app.UseAuthorization();           
+
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
