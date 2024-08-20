@@ -1,0 +1,36 @@
+﻿@page "/registeredusers"
+
+@inject RestaurantReviews2024.App.Services.IRegisteredUsersAdminService RegisteredUsersService
+
+<PageTitle>Currently Registered Users</PageTitle>
+
+<div class="w3-card w3-blue-grey style=width:50%">
+    @if (RegisteredUserItems is not null)
+{
+        @foreach (var item in RegisteredUserItems)
+        {
+            <div style="width:50%">
+                <p class="w3-card w3-khaki">
+                    @item.FirstName @item.LastName Email: @item.Email
+                </p>
+            </div>
+        }
+}
+</div>
+
+@code {
+    protected IEnumerable<TestUser> RegisteredUserItems { get; private set; } = [];
+
+    protected override async Task OnInitializedAsync()
+    {
+        if(RegisteredUsersService is not null)
+        {
+            var resultsContainer = await RegisteredUsersService.GetAllRegisteredUsersAsync();
+
+            if (resultsContainer != null && resultsContainer.Count > 0)
+            {
+                RegisteredUserItems = resultsContainer;
+            }
+        }
+    }
+}

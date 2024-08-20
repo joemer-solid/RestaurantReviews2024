@@ -25,6 +25,8 @@ namespace RestaurantReviews2024.Server
             services.AddServerSideBlazor()
                 .AddInteractiveServerComponents();
 
+            services.AddCascadingAuthenticationState();
+
             services.AddHttpClient<IRestaurantsListService, RestaurantListService>(client =>
             {
                 client.BaseAddress = new Uri("https://localhost:7131/");

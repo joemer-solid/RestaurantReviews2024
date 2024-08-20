@@ -1,0 +1,33 @@
+﻿@inject RestaurantReviews2024.App.Services.TokenProvider TokenProvider
+<div class="bg-light" id="sidebar-wrapper">
+    <div class="menu list-group list-group-flush">
+        <AuthorizeView>
+            <Authorized>
+                <NavLink class="list-group-item list-group-item-action bg-light" href="/" Match="NavLinkMatch.All">
+                    <span class="oi oi-home" aria-hidden="true"></span> Home
+                </NavLink>
+                <NavLink class="list-group-item list-group-item-action bg-light" href="/restaurantlist">
+                    <span class="oi oi-list-rich" aria-hidden="true"></span> View Restaurants
+                </NavLink>
+                <form action="/userlogout" method="post">
+                    <button class="nav-link btn btn-link" type="submit">
+                        <span class="oi oi-list-rich" aria-hidden="true"></span> Log out (@context?.User?.Identity?.Name)
+                    </button>
+                    <input name="__RequestVerificationToken" type="hidden"
+                           value="@TokenProvider.XsrfToken">
+                </form>
+              @*   <NavLink class="list-group-item list-group-item-action bg-light" href="/login">
+                    <span class="oi oi-list-rich" aria-hidden="true"></span> Log In
+                </NavLink> *@
+                <NavLink class="list-group-item list-group-item-action bg-light" href="/registeredusers">
+                    <span class="oi oi-list-rich" aria-hidden="true"></span> View Registered Users
+                </NavLink>
+            </Authorized>
+            <NotAuthorized> 
+               <NavLink class="list-group-item list-group-item-action bg-light" href="/login">
+                    <span class="oi oi-list-rich" aria-hidden="true"></span> Log In
+                </NavLink>
+            </NotAuthorized>
+        </AuthorizeView>
+    </div>
+</div>

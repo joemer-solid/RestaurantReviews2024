@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestaurantReviewsUI", "Rest
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestaurantReviews2024.Server", "RestaurantReviews2024.Server\RestaurantReviews2024.Server.csproj", "{887FE5F5-219D-457D-95BC-D046AB7333B4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestaurantReviews2024.App", "RestaurantReviews2024.App\RestaurantReviews2024.App.csproj", "{D82EAD7B-FD7D-4875-AC43-C9FE051150DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestaurantReviews2024.App", "RestaurantReviews2024.App\RestaurantReviews2024.App.csproj", "{D82EAD7B-FD7D-4875-AC43-C9FE051150DD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

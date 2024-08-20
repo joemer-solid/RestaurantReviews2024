@@ -18,6 +18,18 @@ namespace RestaurantReviews2024.Server.Controller
                         FirstName = "Kevin",
                         LastName = "Dockx",
                         Email = "kevin.dockx@gmail.com" 
+                    },
+                    new TestUser()
+                    {
+                        FirstName = "Natalie",
+                        LastName = "Mars",
+                        Email = "natalie.mars@hotmail.com"
+                    },
+                    new TestUser()
+                    {
+                        FirstName = "Jamie",
+                        LastName = "Benzy",
+                        Email = "jamiebenzy@use.startmail.com"
                     }
             });
         }
