@@ -1,9 +1,9 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿
 using System;
 
 namespace RestaurantReviewsShared.Entities
 {
-    public class ApplicationUser : IdentityUser
+    public class ApplicationUser 
     {
         public ApplicationUser(string firstName, string lastName)
         {

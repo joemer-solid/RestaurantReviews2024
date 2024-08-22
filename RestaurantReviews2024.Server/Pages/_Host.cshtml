@@ -35,7 +35,8 @@
         var initialTokenState = new RestaurantReviews2024.App.Services.InitialApplicationState
             {
                 XsrfToken = Xsrf.GetAndStoreTokens(HttpContext).RequestToken!,
-                Cookie = HttpContext.Request.Cookies[".AspNetCore.Cookies"]!
+                // Cookie = HttpContext.Request.Cookies[".AspNetCore.Cookies"]!
+                Cookie = HttpContext.Request.Cookies[".AspNetCore.Mvc.CookieTempDataProvider"]!
             };
     }
 

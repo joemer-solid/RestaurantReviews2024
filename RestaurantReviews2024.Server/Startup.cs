@@ -24,6 +24,8 @@ namespace RestaurantReviews2024.Server
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            ConfigureIdentityRelatedServices(services, Configuration);
+
             services.AddRazorPages();
             services.AddServerSideBlazor()
                 .AddInteractiveServerComponents();
@@ -44,25 +46,42 @@ namespace RestaurantReviews2024.Server
             {
                 client.BaseAddress = new Uri("https://localhost:44345/");
             });
-
-            ConfigureIdentityRelatedServices(services,Configuration);
+           
 
             // TokenProvider is a service defined in the App (RestaurantReviewsUI)
             services.AddScoped<TokenProvider>();
 
-            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+            services.AddAuthentication(IdentityConstants.ApplicationScheme)
                 .AddCookie();
         }
 
         private static void ConfigureIdentityRelatedServices(IServiceCollection services, IConfiguration configuration)
         {
             
-            var connectionString = configuration.GetConnectionString("DefaultConnection");
+            var connectionString = configuration.GetConnectionString("SqlServerLocal");
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(connectionString));
             services.AddDatabaseDeveloperPageExceptionFilter();
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            services.ConfigureApplicationCookie(options =>
+            {
+                // Cookie settings
+                options.Cookie.HttpOnly = true;
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
+
+                options.LoginPath = "/Identity/Account/Login";
+                options.AccessDeniedPath = "/Identity/Account/AccessDenied";
+                options.SlidingExpiration = true;
+            });
+
+            // By default, both cookies and proprietary tokens are activated.
+            // Cookies and tokens are issued at login if the useCookies query string parameter in the login endpoint is true.
+            services.AddIdentityApiEndpoints<IdentityUser>()
+                .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -79,6 +98,7 @@ namespace RestaurantReviews2024.Server
                 app.UseHsts();
             }
 
+            
             app.UseHttpsRedirection();
             app.UseStaticFiles();  
             

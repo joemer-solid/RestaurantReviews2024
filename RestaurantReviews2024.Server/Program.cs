@@ -6,6 +6,7 @@ namespace RestaurantReviews2024.Server
     {
         public static void Main(string[] args)
         {
+           
             #region reference only - to be deleted after testing
             //var builder = WebApplication.CreateBuilder(args);
             //var app = builder.Build();
@@ -14,7 +15,9 @@ namespace RestaurantReviews2024.Server
 
             //app.Run();
             #endregion
-            CreateHostBuilder(args).Build().Run();
+            CreateHostBuilder(args)
+                .Build()                
+                .Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

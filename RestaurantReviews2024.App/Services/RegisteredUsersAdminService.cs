@@ -1,4 +1,4 @@
-﻿using RestaurantReviewsShared.Identity;
+﻿using RestaurantReviewsShared.Entities;
 using System.Net.Http.Json;
 
 namespace RestaurantReviews2024.App.Services

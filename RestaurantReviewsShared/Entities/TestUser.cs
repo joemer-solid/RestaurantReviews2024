@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace RestaurantReviewsShared.Identity
+namespace RestaurantReviewsShared.Entities
 {
     public class TestUser
     {

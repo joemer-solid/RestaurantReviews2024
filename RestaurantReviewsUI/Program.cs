@@ -32,7 +32,7 @@ namespace RestaurantReviewsUI
 
             builder.Services.AddScoped<IRestaurantsListService,RestaurantListService>();
 			builder.Services.AddScoped<IUserReviewService,UserReviewService>();
-            builder.Services.AddScoped<ApplicationUserState>();
+            //builder.Services.AddScoped<ApplicationUserState>();
 
             var app = builder.Build();
 
